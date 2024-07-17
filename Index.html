@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Router Example</title>
+  <!-- React CDN -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <!-- React Router CDN -->
+  <script src="https://unpkg.com/react-router-dom@5.3.0/umd/react-router-dom.min.js"></script>
+  <!-- Babel CDN for JSX compilation -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="main.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { BrowserRouter, Route, Link, Switch } = ReactRouterDOM;
+
+    function Home() {
+      return (
+        <div>
+          <h2>Home</h2>
+          <p>Welcome to our website! Feel free to explore.</p>
+        </div>
+      );
+    }
+
+    function About() {
+      return (
+        <div>
+          <h2>About</h2>
+          <p>Learn more about our company and team.</p>
+        </div>
+      );
+    }
+
+    function Contact() {
+      return (
+        <div>
+          <h2>Contact</h2>
+          <p>Reach out to us. We'd love to hear from you!</p>
+        </div>
+      );
+    }
+
+    function App() {
+      return (
+        <div>
+          <h1>React Router Example</h1>
+          <nav>
+            <ul>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/about">About</Link></li>
+              <li><Link to="/contact">Contact</Link></li>
+            </ul>
+          </nav>
+
+          <hr />
+
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/contact" component={Contact} />
+          </Switch>
+        </div>
+      );
+    }
+
+    ReactDOM.render(
+<BrowserRouter basename={window.location.pathname || ''}>
+
+        <App />
+      </BrowserRouter>,
+      document.getElementById('root')
+    );
+  </script>
+</body>
+</html>
+  
